@@ -3,10 +3,10 @@
 # ------------------------------------------------------
 
 type User {
+  name: String
   uid: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  name: String!
 }
 
 """
@@ -89,11 +89,11 @@ type Mutation {
 }
 
 input CreateUserInput {
+  name: String
   uid: String!
-  name: String!
 }
 
 input UpdateUserInput {
-  uid: String!
   name: String
+  uid: String!
 }
