@@ -11,7 +11,7 @@ export default class User implements RestrictProperties<User, UserType> {
   updatedAt: Date
   @Field({ nullable: true })
   name: string
-  
+
   // Todo Add below to make optional fields optional.
   // @Field({ nullable: true })
 }
