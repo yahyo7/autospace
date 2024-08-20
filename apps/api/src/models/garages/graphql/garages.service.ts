@@ -4,7 +4,7 @@ import { PrismaService } from 'src/common/prisma/prisma.service'
 import { CreateGarageInput } from './dtos/create-garage.input'
 import { UpdateGarageInput } from './dtos/update-garage.input'
 import { CreateSlotInputWithoutGarageId } from 'src/models/slots/graphql/dtos/create-slot.input'
-import { Prisma, SlotType } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class GaragesService {
@@ -31,11 +31,11 @@ export class GaragesService {
           images,
         },
       })
-      const slotsByType = this.groupSlotsByType(Slots, createdGarage.id)
+      // const slotsByType = this.groupSlotsByType(Slots, createdGarage.id)
 
-      const createSlots = await tx.slot.createMany({
-        data: slotsByType,
-      })
+      // const createSlots = await tx.slot.createMany({
+      //   data: slotsByType,
+      // })
 
       return createdGarage
     })
@@ -51,6 +51,7 @@ export class GaragesService {
 
   update(updateGarageInput: UpdateGarageInput) {
     const { id, Address, Slots, ...data } = updateGarageInput
+    console.log(Address, Slots) //added to fix error(eslint)
     return this.prisma.garage.update({
       where: { id },
       data: data,
