@@ -78,9 +78,7 @@ ALTER TABLE "Verification" DROP CONSTRAINT "Verification_adminId_fkey";
 -- DropForeignKey
 ALTER TABLE "Verification" DROP CONSTRAINT "Verification_garageId_fkey";
 
--- AlterTable
-ALTER TABLE "Admin" DROP COLUMN "createdAt",
-DROP COLUMN "updatedAt";
+
 
 -- AlterTable
 ALTER TABLE "User" DROP COLUMN "image";
