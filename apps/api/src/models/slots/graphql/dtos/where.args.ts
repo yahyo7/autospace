@@ -32,13 +32,14 @@ export class SlotWhereInputStrict
   implements RestrictProperties<SlotWhereInputStrict, Prisma.SlotWhereInput>
 {
   id: IntFilter
-  createdAt: Prisma.DateTimeFilter
+  createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   displayName: StringFilter
   pricePerHour: FloatFilter
   length: IntFilter
   width: IntFilter
   height: IntFilter
+
   type: EnumSlotTypeFilter
   garageId: IntFilter
   Garage: GarageRelationFilter

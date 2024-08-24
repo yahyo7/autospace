@@ -6,7 +6,7 @@ import { CreateSlotInputWithoutGarageId } from 'src/models/slots/graphql/dtos/cr
 @InputType()
 export class CreateGarageInput extends PickType(
   Garage,
-  ['description', 'displayName', 'images', 'companyId'],
+  ['description', 'displayName', 'images'],
   InputType,
 ) {
   Address: CreateAddressInputWithoutGarageId

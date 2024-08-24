@@ -20,6 +20,7 @@ export class ValetWhereUniqueInput {
 export class ValetWhereInputStrict
   implements RestrictProperties<ValetWhereInputStrict, Prisma.ValetWhereInput>
 {
+  User: UserRelationFilter
   uid: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -27,13 +28,10 @@ export class ValetWhereInputStrict
   image: StringFilter
   licenceID: StringFilter
   companyId: IntFilter
-  User: UserRelationFilter
   Company: CompanyRelationFilter
   BookingTimeline: BookingTimelineListRelationFilter
   PickupAssignments: ValetAssignmentListRelationFilter
   ReturnAssignments: ValetAssignmentListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: ValetWhereInput[]
   OR: ValetWhereInput[]

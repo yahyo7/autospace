@@ -28,8 +28,6 @@ export class CompanyWhereInputStrict
   Garages: GarageListRelationFilter
   Managers: ManagerListRelationFilter
   Valets: ValetListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: CompanyWhereInput[]
   OR: CompanyWhereInput[]

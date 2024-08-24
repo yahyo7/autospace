@@ -1,6 +1,7 @@
 import { InputType, PartialType } from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
 import {
+  DateTimeFilter,
   IntFilter,
   RestrictProperties,
   StringFilter,
@@ -19,12 +20,12 @@ export class ManagerWhereInputStrict
   implements
     RestrictProperties<ManagerWhereInputStrict, Prisma.ManagerWhereInput>
 {
+  User: UserRelationFilter
   uid: StringFilter
-  createdAt: StringFilter
-  updatedAt: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
   displayName: StringFilter
   companyId: IntFilter
-  User: UserRelationFilter
   Company: CompanyRelationFilter
   BookingTimeline: BookingTimelineListRelationFilter
   // Todo: Add the below field decorator only to the $Enums types.

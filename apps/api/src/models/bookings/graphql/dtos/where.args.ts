@@ -44,15 +44,14 @@ export class BookingWhereInputStrict
   vehicleNumber: StringFilter
   phoneNumber: StringFilter
   passcode: StringFilter
+
   status: EnumBookingStatusFilter
   slotId: IntFilter
   customerId: StringFilter
-  Slot: SlotRelationFilter
-  Customer: CustomerRelationFilter
   ValetAssignment: ValetAssignmentRelationFilter
+  Customer: CustomerRelationFilter
+  Slot: SlotRelationFilter
   BookingTimeline: BookingTimelineListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: BookingWhereInput[]
   OR: BookingWhereInput[]

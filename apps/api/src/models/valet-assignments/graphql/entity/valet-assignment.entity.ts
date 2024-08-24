@@ -9,9 +9,7 @@ export class ValetAssignment
   bookingId: number
   createdAt: Date
   updatedAt: Date
-  @Field({ nullable: true })
   pickupLat: number
-  @Field({ nullable: true })
   pickupLng: number
   @Field({ nullable: true })
   returnLat: number

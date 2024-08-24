@@ -9,7 +9,6 @@ export class Manager implements RestrictProperties<Manager, ManagerType> {
   updatedAt: Date
   @Field({ nullable: true })
   displayName: string
-  @Field({ nullable: true })
   companyId: number
   // Todo Add below to make optional fields optional.
   // @Field({ nullable: true })

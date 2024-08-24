@@ -1,6 +1,13 @@
 import { InputType, PartialType } from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
-import { RestrictProperties } from 'src/common/dtos/common.input'
+import {
+  DateTimeFilter,
+  FloatFilter,
+  IntFilter,
+  RestrictProperties,
+  StringFilter,
+} from 'src/common/dtos/common.input'
+import { GarageRelationFilter } from 'src/models/garages/graphql/dtos/where.args'
 
 @InputType()
 export class AddressWhereUniqueInput {
@@ -12,20 +19,14 @@ export class AddressWhereInputStrict
   implements
     RestrictProperties<AddressWhereInputStrict, Prisma.AddressWhereInput>
 {
-  id: number | Prisma.IntFilter<'Address'>
-  createdAt: string | Date | Prisma.DateTimeFilter<'Address'>
-  updatedAt: string | Date | Prisma.DateTimeFilter<'Address'>
-  address: string | Prisma.StringFilter<'Address'>
-  lat: number | Prisma.FloatFilter<'Address'>
-  lng: number | Prisma.FloatFilter<'Address'>
-  garageId: number | Prisma.IntFilter<'Address'>
-  Garage:
-    | (Prisma.Without<Prisma.GarageRelationFilter, Prisma.GarageWhereInput> &
-        Prisma.GarageWhereInput)
-    | (Prisma.Without<Prisma.GarageWhereInput, Prisma.GarageRelationFilter> &
-        Prisma.GarageRelationFilter)
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
+  id: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: StringFilter
+  lat: FloatFilter
+  lng: FloatFilter
+  garageId: IntFilter
+  Garage: GarageRelationFilter
 
   AND: AddressWhereInput[]
   OR: AddressWhereInput[]

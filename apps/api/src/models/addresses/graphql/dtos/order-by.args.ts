@@ -10,14 +10,22 @@ export class AddressOrderByWithRelationInputStrict
       Prisma.AddressOrderByWithRelationInput
     >
 {
+  @Field(() => Prisma.SortOrder)
   id: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   createdAt: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   updatedAt: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   address: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   lat: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   lng: Prisma.SortOrder
+  @Field(() => Prisma.SortOrder)
   garageId: Prisma.SortOrder
   Garage: Prisma.GarageOrderByWithRelationInput
+
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }

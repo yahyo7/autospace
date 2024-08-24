@@ -28,8 +28,6 @@ export class ReviewWhereInputStrict
   garageId: IntFilter
   Customer: CustomerRelationFilter
   Garage: GarageRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: ReviewWhereInput[]
   OR: ReviewWhereInput[]

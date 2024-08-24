@@ -8,6 +8,7 @@ export class BookingTimeline
 {
   id: number
   timestamp: Date
+  @Field(() => $Enums.BookingStatus)
   status: $Enums.BookingStatus
   bookingId: number
   @Field({ nullable: true })
