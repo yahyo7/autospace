@@ -8,6 +8,10 @@ type User {
   uid: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  admin: Admin
+  manager: Manager
+  valet: Valet
+  customer: Customer
 }
 
 """
@@ -24,11 +28,13 @@ type LoginOutput {
   user: User!
 }
 
-type Customer {
-  displayName: String
+type Admin {
   uid: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  user: User
+  verifications: [Verification!]!
+  verificationsCount: Int!
 }
 
 type Manager {
@@ -47,6 +53,14 @@ type Valet {
   updatedAt: DateTime!
   displayName: String!
   licenceID: String!
+}
+
+type Customer {
+  displayName: String
+  uid: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User
 }
 
 type Garage {
@@ -598,12 +612,6 @@ type Review {
   rating: Int!
   customerId: String!
   garageId: Int!
-}
-
-type Admin {
-  uid: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 type Query {
