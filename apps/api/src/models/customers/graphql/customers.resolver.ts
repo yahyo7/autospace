@@ -77,5 +77,4 @@ export class CustomersResolver {
   bookings(@Parent() customer: Customer) {
     return this.prisma.booking.findMany({ where: { customerId: customer.uid } })
   }
-
 }
