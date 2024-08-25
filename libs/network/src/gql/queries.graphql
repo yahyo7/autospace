@@ -1,0 +1,29 @@
+mutation RegisterWithCredentials(
+  $registerWithCredentialsInput: RegisterWithCredentialsInput!
+) {
+  registerWithCredentials(
+    registerWithCredentialsInput: $registerWithCredentialsInput
+  ) {
+    image
+    name
+    uid
+    createdAt
+    updatedAt
+  }
+}
+
+query Companies($skip: Int, $take: Int, $orderBy: [CompanyOrderByWithRelationInput!]) {
+  companies(skip: $skip, take: $take, orderBy: $orderBy) {
+    displayName
+    description
+    id
+    createdAt
+    updatedAt
+    garages {
+      id
+    }
+    managers {
+      uid
+    }
+  }
+}

@@ -96,6 +96,11 @@ export class UsersResolver {
     return this.usersService.remove(args)
   }
 
+  // @Query(() => AuthProvider, { name: 'getAuthProvider', nullable: true })
+  // getAuthProvider(@Args('uid') uid: string) {
+  //   return this.prisma.authProvider.findUnique({ where: { uid } })
+  // }
+
   @ResolveField(() => Admin, { nullable: true })
   admin(@Parent() user: User) {
     return this.prisma.admin.findUnique({ where: { uid: user.uid } })

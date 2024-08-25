@@ -43,6 +43,7 @@ type Manager {
   createdAt: DateTime!
   updatedAt: DateTime!
   companyId: Int!
+  company: Company
 }
 
 type Valet {
@@ -61,6 +62,47 @@ type Customer {
   createdAt: DateTime!
   updatedAt: DateTime!
   user: User
+  bookings: [Booking!]!
+}
+
+type Booking {
+  pricePerHour: Int
+  totalPrice: Int
+  phoneNumber: String
+  passcode: String
+  status: BookingStatus!
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  startTime: DateTime!
+  endTime: DateTime!
+  vehicleNumber: String!
+  slotId: Int!
+  customerId: String!
+  slot: Slot!
+  customer: Customer!
+  bookingTimeline: [BookingTimeline!]!
+  valetAssignment: ValetAssignment
+}
+
+enum BookingStatus {
+  BOOKED
+  VALET_ASSIGNED_FOR_CHECK_IN
+  VALET_PICKED_UP
+  CHECKED_IN
+  VALET_ASSIGNED_FOR_CHECK_OUT
+  CHECKED_OUT
+  VALET_RETURNED
+}
+
+type Company {
+  displayName: String
+  description: String
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  garages: [Garage!]!
+  managers: [Manager!]!
 }
 
 type Garage {
@@ -301,16 +343,6 @@ input BookingTimelineWhereInput {
   NOT: [BookingTimelineWhereInput!]
 }
 
-enum BookingStatus {
-  BOOKED
-  VALET_ASSIGNED_FOR_CHECK_IN
-  VALET_PICKED_UP
-  CHECKED_IN
-  VALET_ASSIGNED_FOR_CHECK_OUT
-  CHECKED_OUT
-  VALET_RETURNED
-}
-
 input BookingRelationFilter {
   is: BookingWhereInput
   isNot: BookingWhereInput
@@ -541,16 +573,6 @@ type ReturnCount {
   count: Int!
 }
 
-type Company {
-  displayName: String
-  description: String
-  id: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  garages: [Garage!]!
-  managers: [Manager!]!
-}
-
 type Verification {
   createdAt: DateTime!
   garageId: Int!
@@ -563,22 +585,6 @@ type MinimalSlotGroupBy {
   type: SlotType!
   pricePerHour: Int!
   count: Int!
-}
-
-type Booking {
-  pricePerHour: Int
-  totalPrice: Int
-  phoneNumber: String
-  passcode: String
-  status: BookingStatus!
-  id: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  startTime: DateTime!
-  endTime: DateTime!
-  vehicleNumber: String!
-  slotId: Int!
-  customerId: String!
 }
 
 type ValetAssignment {
@@ -620,6 +626,8 @@ type Query {
   user(where: UserWhereUniqueInput!): User!
   admins(distinct: [AdminScalarFieldEnum!], where: AdminWhereInput, orderBy: [AdminOrderByWithRelationInput!], cursor: AdminWhereUniqueInput, take: Int, skip: Int): [Admin!]!
   admin(where: AdminWhereUniqueInput!): Admin!
+  adminMe: Admin!
+  adminsCount(where: AdminWhereInput): Int!
   customers(distinct: [CustomerScalarFieldEnum!], where: CustomerWhereInput, orderBy: [CustomerOrderByWithRelationInput!], cursor: CustomerWhereUniqueInput, take: Int, skip: Int): [Customer!]!
   customer(where: CustomerWhereUniqueInput!): Customer!
   managers(distinct: [ManagerScalarFieldEnum!], where: ManagerWhereInput, orderBy: [ManagerOrderByWithRelationInput!], cursor: ManagerWhereUniqueInput, take: Int, skip: Int): [Manager!]!

@@ -16,6 +16,7 @@ import { GetUserType } from 'src/common/types'
 import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
 import { PrismaService } from 'src/common/prisma/prisma.service'
 import User from 'src/models/users/graphql/entity/user.entity'
+import { Booking } from 'src/models/bookings/graphql/entity/booking.entity'
 
 @Resolver(() => Customer)
 export class CustomersResolver {
@@ -72,4 +73,9 @@ export class CustomersResolver {
   user(@Parent() customer: Customer) {
     return this.prisma.user.findUnique({ where: { uid: customer.uid } })
   }
+  @ResolveField(() => [Booking])
+  bookings(@Parent() customer: Customer) {
+    return this.prisma.booking.findMany({ where: { customerId: customer.uid } })
+  }
+
 }
